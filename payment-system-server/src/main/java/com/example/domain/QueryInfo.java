@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * クエリ情報エンティティクラス
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class QueryInfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,5 +21,10 @@ public class QueryInfo implements Serializable {
 	// 日付
 	private String payDate;
 	// 品目ID
-	private int itemId;
+	private Integer itemId;
+
+	@Override
+	public String toString() {
+		return "日付:" + payDate +  ", 品目ID:" + itemId;
+	}
 }

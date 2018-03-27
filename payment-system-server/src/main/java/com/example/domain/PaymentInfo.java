@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 支払情報エンティティクラス
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class PaymentInfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,13 +21,23 @@ public class PaymentInfo implements Serializable {
 	// 日付
 	private String payDate;
 	// 品目ID
-	private int itemId;
+	private Integer itemId;
 	// 品目名
 	private String name;
 	// 単価
-	private int unitPrice;
+	private Integer unitPrice;
 	// 数量
-	private int quantity;
+	private Integer quantity;
 	// 金額
-	private int amount;
+	private Integer amount;
+	
+	@Override
+	public String toString() {
+		return "日付:" + payDate +
+		       ", 品目ID:" + itemId +
+		       ", 品目名:" + name +
+	           ", 単価:" + unitPrice +
+		       ", 数量:" + quantity +
+		       ", 金額:" + amount;
+	}
 }

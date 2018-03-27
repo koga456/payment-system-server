@@ -25,7 +25,7 @@ public class GetItemListRestController {
 	
 	/**
 	 * 品目一覧取得API
-	 * @return 品目情報リスト
+	 * @return 品目一覧エンティティクラス
 	 */
 	@PostMapping
 	public ItemList getItemList() {
