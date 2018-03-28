@@ -6,25 +6,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.domain.PaymentInfo;
-import com.example.domain.QueryInfo;
+import com.example.dto.PaymentDto;
+import com.example.dto.SearchConditionsDto;
 import com.example.repository.PaymentRepository;
+import com.example.util.CommonUtil;
 
+/**
+ * 購入履歴一覧表示サービスクラス
+ * @author YutaKoga
+ */
 @Service
 public class PaymentListService {
 	
 	@Autowired
 	PaymentRepository paymentRepository;
-	@Autowired
-	ConvertObjectService convertObjectService;
 	
-	public List<PaymentInfo> findByQueryInfo(QueryInfo queryInfo) throws ParseException {
+	/**
+	 * 支払情報取得メソッド
+	 * @param 検索条件DTOクラス
+	 * @return 支払情報DTOリスト
+	 */
+	public List<PaymentDto> getPayment(SearchConditionsDto searchConditions) throws ParseException {
 		
-		return convertObjectService
-				.convertToPayJL(
+		return CommonUtil
+				.createPaymentDtoList(
 						paymentRepository
-						.findByQueryInfo(
-								convertObjectService
-								.convertToQueryDB(queryInfo)));
+						.getPayment(
+								CommonUtil
+								.createSCSql(searchConditions)));
 	}
 }

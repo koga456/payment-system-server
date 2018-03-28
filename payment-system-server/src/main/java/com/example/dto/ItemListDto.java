@@ -1,23 +1,25 @@
-package com.example.domain;
+package com.example.dto;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.example.domain.Item;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * w“ü—š—ğˆê——ƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX
+ * å“ç›®ä¸€è¦§DTOã‚¯ãƒ©ã‚¹
  * @author YutaKoga
- * @version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentInfoList implements Serializable {
+public class ItemListDto implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	List<PaymentInfo> paymentInfolist;
+	// å“ç›®ä¸€è¦§ãƒªã‚¹ãƒˆ
+	List<Item> itemlist;
 }

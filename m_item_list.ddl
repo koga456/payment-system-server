@@ -1,5 +1,5 @@
 CREATE TABLE `m_item_list` (
-  `itemId` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
   `name` varchar(10) NOT NULL,
-  PRIMARY KEY (`itemId`)
+  PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

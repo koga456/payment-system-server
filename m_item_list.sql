@@ -1,5 +1,5 @@
 INSERT INTO `payment-system`.`m_item_list`
-(`itemId`,
+(`item_id`,
 `name`)
 VALUES
 (1,'本'),

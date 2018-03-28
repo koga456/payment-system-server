@@ -1,20 +1,34 @@
 <!--?xml version="1.0" encoding="UTF-8" ?-->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.domain.mapper.PaymentMapper">
-    <select id="findByQueryInfo" parameterType="QueryInfo" resultType="PaymentInfoDB">
+    <select id="getPayment" parameterType="SearchConditionsDtoDb" resultType="ExtendedPayment">
         SELECT
-        	* 
+        	p.id,
+        	p.pay_date,
+        	p.item_id,
+        	m.name,
+        	p.unit_price,
+        	p.quantity,
+        	p.amount
         FROM 
-        	payment
+        	payment AS p
+        INNER JOIN
+            m_item_list AS m
+        ON 
+        	p.item_id = m.item_id
         <where>
-        	<if test="queryInfo.payDate != null">
-        		AND pay_date = #{queryInfo.payDate}
+        	<if test="searchConditions.payDate != null">
+        		AND p.pay_date = #{searchConditions.payDate}
         	</if>
-        	<if test="queryInfo.itemId != null">
-        		AND item_id = #{queryInfo.itemId}
+        	<if test="searchConditions.itemId != null">
+        		AND p.item_id = #{searchConditions.itemId}
         	</if>
         </where> 
         ORDER BY 
-        	pay_date DESC
+        	p.pay_date DESC, p.item_id
+    </select>
+    <select id="insertPayment" parameterType="Payment">
+    	INSERT INTO payment (pay_date, item_id, unit_price, quantity, amount)
+    	VALUES (#{payment.payDate}, #{payment.itemId}, #{payment.unitPrice}, #{payment.quantity}, #{payment.amount})
     </select>
 </mapper>

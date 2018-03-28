@@ -1,30 +1,30 @@
 package com.example.domain;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * ƒNƒGƒŠî•ñƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX
+ * æ¤œç´¢æ¡ä»¶ã‚¯ãƒ©ã‚¹(SQLç”¨)
  * @author YutaKoga
- * @version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class QueryInfo implements Serializable {
+public class SearchConditionsDtoDb implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	// “ú•t
-	private String payDate;
-	// •i–ÚID
+	// æ—¥ä»˜
+	private Date payDate;
+	// å“ç›®ID
 	private Integer itemId;
 
 	@Override
 	public String toString() {
-		return "“ú•t:" + payDate +  ", •i–ÚID:" + itemId;
+		return "æ—¥ä»˜:" + payDate +  ", å“ç›®ID:" + itemId;
 	}
 }

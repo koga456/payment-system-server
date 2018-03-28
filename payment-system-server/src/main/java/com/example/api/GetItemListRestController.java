@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domain.Item;
-import com.example.domain.ItemList;
+import com.example.dto.ItemListDto;
 import com.example.service.GetItemListService;
 
 /**
- * �i�ڈꗗ�擾Rest�R���g���[���N���X
+ * 品目一覧取得RESTコントローラクラス
  * @author YutaKoga
- * @version 1.0
  */
 @RestController
 @RequestMapping("api/getItemList")
@@ -24,20 +23,24 @@ public class GetItemListRestController {
 	GetItemListService getItemListService;
 	
 	/**
-	 * �i�ڈꗗ�擾API
-	 * @return �i�ڈꗗ�G���e�B�e�B�N���X
+	 * 品目一覧取得API
+	 * <br>
+	 * [説明]品目一覧を返却する。
+	 * @return 品目一覧DTOクラス
 	 */
 	@PostMapping
-	public ItemList getItemList() {
+	public ItemListDto getItemList() {
 		
 		System.out.println("call getItemList");
 		
+		// 品目一覧取得Serviceの呼び出し
 		List<Item> itemList = getItemListService.selectAll();
 		
 		System.out.println("end getItemList");
 		System.out.println(itemList);
 		
-		ItemList itemListJson = new ItemList(itemList);
+		// 返却値：購入履歴一覧DTOクラス
+		ItemListDto itemListJson = new ItemListDto(itemList);
 		
 		return itemListJson;
 	}

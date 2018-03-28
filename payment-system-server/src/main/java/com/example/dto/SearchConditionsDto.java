@@ -1,31 +1,29 @@
-package com.example.domain;
+package com.example.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * ƒNƒGƒŠî•ñƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX(DBƒpƒ‰ƒ[ƒ^—p)
+ * æ¤œç´¢æ¡ä»¶DTOã‚¯ãƒ©ã‚¹
  * @author YutaKoga
- * @version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class QueryInfoDB implements Serializable {
+public class SearchConditionsDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	// “ú•t
-	private Date payDate;
-	// •i–ÚID
+	// æ—¥ä»˜
+	private String payDate;
+	// å“ç›®ID
 	private Integer itemId;
 
 	@Override
 	public String toString() {
-		return "“ú•t:" + payDate +  ", •i–ÚID:" + itemId;
+		return "æ—¥ä»˜:" + payDate +  ", å“ç›®ID:" + itemId;
 	}
 }

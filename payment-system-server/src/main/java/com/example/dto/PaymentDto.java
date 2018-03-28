@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.dto;
 
 import java.io.Serializable;
 
@@ -7,37 +7,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * x•¥î•ñƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX
+ * æ”¯æ‰•æƒ…å ±DTOã‚¯ãƒ©ã‚¹
  * @author YutaKoga
- * @version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentInfo implements Serializable {
+public class PaymentDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	// “ú•t
+	// æ—¥ä»˜
 	private String payDate;
-	// •i–ÚID
+	// å“ç›®ID
 	private Integer itemId;
-	// •i–Ú–¼
+	// å“ç›®å
 	private String name;
-	// ’P‰¿
+	// å˜ä¾¡
 	private Integer unitPrice;
-	// ”—Ê
+	// æ•°é‡
 	private Integer quantity;
-	// ‹àŠz
+	// é‡‘é¡
 	private Integer amount;
 	
 	@Override
 	public String toString() {
-		return "“ú•t:" + payDate +
-		       ", •i–ÚID:" + itemId +
-		       ", •i–Ú–¼:" + name +
-	           ", ’P‰¿:" + unitPrice +
-		       ", ”—Ê:" + quantity +
-		       ", ‹àŠz:" + amount;
+		return "æ—¥ä»˜:" + payDate +
+		       ", å“ç›®ID:" + itemId +
+		       ", å“ç›®å:" + name +
+	           ", å˜ä¾¡:" + unitPrice +
+		       ", æ•°é‡:" + quantity +
+		       ", é‡‘é¡:" + amount;
 	}
 }

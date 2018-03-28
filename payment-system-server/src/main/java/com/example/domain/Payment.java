@@ -9,37 +9,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * x•¥î•ñƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX(DB•Ô‹p’l—p)
+ * æ”¯æ‰•æƒ…å ±Entityã‚¯ãƒ©ã‚¹
  * @author YutaKoga
- * @version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentInfoDB implements Serializable {
+public class Payment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	// ID
 	private Integer id;
-	// “ú•t
+	// æ—¥ä»˜
 	private Date payDate;
-	// •i–ÚID
+	// å“ç›®ID
 	private Integer itemId;
-	// ’P‰¿
+	// å˜ä¾¡
 	private BigDecimal unitPrice;
-	// ”—Ê
+	// æ•°é‡
 	private Integer quantity;
-	// ‹àŠz
+	// é‡‘é¡
 	private BigDecimal amount;
 	
 	@Override
 	public String toString() {
 		return "ID:" + id +
-		       ", “ú•t:" + payDate +
-		       ", •i–ÚID:" + itemId +
-	           ", ’P‰¿:" + unitPrice +
-		       ", ”—Ê:" + quantity +
-		       ", ‹àŠz:" + amount;
+		       ", æ—¥ä»˜:" + payDate +
+		       ", å“ç›®ID:" + itemId +
+	           ", å˜ä¾¡:" + unitPrice +
+		       ", æ•°é‡:" + quantity +
+		       ", é‡‘é¡:" + amount;
 	}
 }

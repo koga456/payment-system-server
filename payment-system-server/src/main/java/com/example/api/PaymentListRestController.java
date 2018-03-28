@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.domain.PaymentInfo;
-import com.example.domain.PaymentInfoList;
-import com.example.domain.QueryInfo;
+import com.example.dto.PaymentDto;
+import com.example.dto.PaymentInfoListDto;
+import com.example.dto.SearchConditionsDto;
 import com.example.service.PaymentListService;
 
 /**
- * w“ü—š—ğˆê——•\¦RestƒRƒ“ƒgƒ[ƒ‰ƒNƒ‰ƒX
+ * è³¼å…¥å±¥æ­´ä¸€è¦§è¡¨ç¤ºRESTã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚¯ãƒ©ã‚¹
  * @author YutaKoga
- * @version 1.0
  */
 @RestController
 @RequestMapping("api/paymentList/")
@@ -27,23 +26,27 @@ public class PaymentListRestController {
 	PaymentListService paymentListService;
 
 	/**
-	 * w“ü—š—ğˆê——•\¦API
-	 * @param ƒNƒGƒŠî•ñƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX
-	 * @return w“ü—š—ğˆê——ƒGƒ“ƒeƒBƒeƒBƒNƒ‰ƒX
+	 * è³¼å…¥å±¥æ­´ä¸€è¦§è¡¨ç¤ºAPI
+	 * <br>
+	 * [èª¬æ˜]å‘¼å‡ºãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚‚ã¨ã«è³¼å…¥å±¥æ­´ä¸€è¦§ãƒ†ãƒ¼ãƒ–ãƒ«ã«SQLã‚’ç™ºè¡Œã—ã€æ¤œç´¢çµæœã‚’jsonå½¢å¼ã§è¿”å´ã™ã‚‹ã€‚
+	 * @param æ¤œç´¢æƒ…å ±DTOã‚¯ãƒ©ã‚¹
+	 * @return è³¼å…¥å±¥æ­´ä¸€è¦§DTOã‚¯ãƒ©ã‚¹
 	 * @throws ParseException 
 	 */
 	@PostMapping
-	PaymentInfoList getPaymentList(@RequestBody QueryInfo queryInfo ) throws ParseException {
+	public PaymentInfoListDto getPaymentList(@RequestBody SearchConditionsDto searchConditions ) throws ParseException {
 		
 		System.out.println("call paymentList");
-		System.out.println(queryInfo);
+		System.out.println(searchConditions);
 		
-		List<PaymentInfo> paymentInfoList = paymentListService.findByQueryInfo(queryInfo);
+		// è³¼å…¥å±¥æ­´ä¸€è¦§è¡¨ç¤ºServiceã®å‘¼ã³å‡ºã—
+		List<PaymentDto> paymentInfoList = paymentListService.getPayment(searchConditions);
 		
 		System.out.println("end paymentList");
 		System.out.println(paymentInfoList);
 		
-		PaymentInfoList payInfoListJson = new PaymentInfoList(paymentInfoList);
+		// è¿”å´å€¤ï¼šè³¼å…¥å±¥æ­´ä¸€è¦§DTOã‚¯ãƒ©ã‚¹
+		PaymentInfoListDto payInfoListJson = new PaymentInfoListDto(paymentInfoList);
 		
 		return payInfoListJson;
 	}
