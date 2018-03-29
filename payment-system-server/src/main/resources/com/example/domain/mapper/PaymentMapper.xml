@@ -18,14 +18,14 @@
         	p.item_id = m.item_id
         <where>
         	<if test="searchConditions.payDate != null">
-        		AND p.pay_date = #{searchConditions.payDate}
+        		AND DATE_FORMAT(p.pay_date,'%Y%m%d') = DATE_FORMAT(#{searchConditions.payDate},'%Y%m%d')
         	</if>
         	<if test="searchConditions.itemId != null">
         		AND p.item_id = #{searchConditions.itemId}
         	</if>
         </where> 
         ORDER BY 
-        	p.pay_date DESC, p.item_id
+        	p.pay_date DESC, p.item_id, p.amount DESC, p.id
     </select>
     <select id="insertPayment" parameterType="Payment">
     	INSERT INTO payment (pay_date, item_id, unit_price, quantity, amount)
